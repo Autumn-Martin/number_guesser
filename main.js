@@ -1,6 +1,12 @@
 function displayGuess() {
-  var guessInput = Math.round(Number(document.getElementById('guessInput').value));
-  document.getElementById('guessDisplay').innerHTML = guessInput;
+  if (document.getElementById('guessInput').value === '') {
+    document.getElementById('guessDisplay').innerHTML = 'nada.'
+  } else if (isNaN(Number(document.getElementById('guessInput').value))) {
+    document.getElementById('guessDisplay').innerHTML = 'not a number.'
+  } else {
+    var guessInput = Math.round(Number(document.getElementById('guessInput').value));
+    document.getElementById('guessDisplay').innerHTML = guessInput;
+  }
 }
 
 let randNum = Math.floor(Math.random() * 11);
@@ -10,10 +16,14 @@ function checkGuess() {
   let playerGuess = Math.round(Number(guessInput.value));
   if (playerGuess === randNum) {
     gameResponse.textContent = 'BOOM!';
+  } else if (guessInput.value === '') {
+    gameResponse.textContent = 'Please enter a number.';
   } else if (playerGuess > randNum){
     gameResponse.textContent = 'That is too high.';
   } else if (playerGuess < randNum) {
     gameResponse.textContent = 'That is too low.';
+  } else if (isNaN(Number(guessInput.value))) {
+    gameResponse.textContent = 'Please enter a number.';
   } else {
     gameResponse.textContent = 'Guess again!';
   }
