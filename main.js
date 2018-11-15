@@ -16,14 +16,12 @@ function checkGuess() {
   let playerGuess = Math.round(Number(guessInput.value));
   if (playerGuess === randNum) {
     gameResponse.textContent = 'BOOM!';
-  } else if (guessInput.value === '') {
+  } else if ((guessInput.value === '') || (isNaN(Number(guessInput.value)))) {
     gameResponse.textContent = 'Please enter a number.';
   } else if (playerGuess > randNum){
     gameResponse.textContent = 'That is too high.';
   } else if (playerGuess < randNum) {
     gameResponse.textContent = 'That is too low.';
-  } else if (isNaN(Number(guessInput.value))) {
-    gameResponse.textContent = 'Please enter a number.';
   } else {
     gameResponse.textContent = 'Guess again!';
   }
