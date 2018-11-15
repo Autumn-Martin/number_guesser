@@ -8,17 +8,22 @@
   </head>
   <body>
 
-
     <div>
-      <h1>Number Guesser</h1>
+      <header>
+        <h1 class="logo-number">Number</h1>
+        <h1 class="logo-guesser">Guesser</h1>
+      </header>
     </div>
+  </br>
     <div>
       <input type='text' id='guessInput' placeholder='Enter your guess'>
     </div>
+  </br>
     <div>
-      <input type='submit' id='guessSubmission' value='Guess'>
+      <input type='submit' id='guessSubmission' class='btn' value='Guess'>
     </div>
-    <div>
+  </br>
+    <div class="game-response-section">
       <p>Your last guess was</p>
       <div id='guessDisplay'></div>
       <div class="gameResponse"></div>

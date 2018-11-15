@@ -1,3 +1,52 @@
+body {
+  text-align: center;
+}
+
+header {
+  background: #404041;
+  padding: 2% 2%;
+  height: 100%;
+  margin-bottom: 2vh;
+}
+
+h1 {
+  display: inline-block;
+  font-size: 4vh;
+  padding: 0% 0.2%;
+}
+
+.btn {
+  background-color: #D0D2D3;
+  color: #FFFFFF;
+  padding: 1% 1%;
+  font-size: 12px;
+  border-radius: 12px;
+  width: 17%;
+}
+
+.btn:hover {
+  background-color: #EB008B;
+}
+
+.logo-number {
+  color: #ED458B
+}
+
+.logo-guesser {
+  color: #E6E7E8
+}
+
+.game-response-section {
+  color: #404041;
+  font-size: 2.5vh;
+}
+
 #guessDisplay {
   color: #EB008B;
+  font-size: 20vh;
+}
+
+#guessInput {
+  text-align: center;
+  font-size: 3vh;
 }
