@@ -35,3 +35,10 @@ var clearButton = document.querySelector('#clear');
 clearButton.addEventListener('click', function() {
   document.getElementById('guessInput').value = '';
 });
+
+var resetButton = document.querySelector('#reset');
+resetButton.addEventListener('click', resetGame);
+
+function resetGame() {
+  location.reload()
+}
