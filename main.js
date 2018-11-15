@@ -10,6 +10,10 @@ function checkGuess() {
   let playerGuess = Math.round(Number(guessInput.value));
   if (playerGuess === randNum) {
     gameResponse.textContent = 'BOOM!';
+  } else if (playerGuess > randNum){
+    gameResponse.textContent = 'That is too high.';
+  } else if (playerGuess < randNum) {
+    gameResponse.textContent = 'That is too low.';
   } else {
     gameResponse.textContent = 'Guess again!';
   }
