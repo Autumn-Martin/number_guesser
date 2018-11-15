@@ -29,3 +29,8 @@ function checkGuess() {
 
 guessSubmission.addEventListener('click', checkGuess);
 guessSubmission.addEventListener('click', displayGuess);
+
+var clearButton = document.querySelector('#clear');
+clearButton.addEventListener('click', function() {
+  document.getElementById('guessInput').value = '';
+});
