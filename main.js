@@ -5,7 +5,7 @@ function displayGuess() {
   } else if (isNaN(Number(document.getElementById('guessInput').value))) {
     document.getElementById('guessDisplay').innerHTML = 'invalid'
   } else {
-    var guessInput = Math.round(Number(document.getElementById('guessInput').value));
+    var guessInput = parseInt(document.getElementById('guessInput').value);
     document.getElementById('guessDisplay').innerHTML = guessInput;
   }
 }
@@ -19,7 +19,7 @@ const gameResponse = document.querySelector('.gameResponse')
 
 function checkGuess() {
   document.getElementById('guessIntro').innerHTML = 'Your last guess was'
-  let playerGuess = Math.round(Number(guessInput.value));
+  let playerGuess = parseInt(guessInput.value);
   if (playerGuess === randNum) {
       gameResponse.textContent = 'BOOM!';
   } else if ((guessInput.value === '') || (isNaN(Number(guessInput.value)))) {
