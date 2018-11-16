@@ -22,6 +22,7 @@ function checkGuess() {
   const gameResponse = document.getElementById('guessResponse');
   document.getElementById('guessIntro').innerHTML = 'Your last guess was';
   document.getElementById('reset').style.display = 'inline';
+  document.getElementById('answerRange').style.display = 'none';
 
   let playerGuess = parseInt(guessInput.value);
 
