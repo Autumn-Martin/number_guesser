@@ -77,7 +77,7 @@ div {
   width: 70%;
 }
 
-#guessInput:focus {outline: 1px solid #ED458B;}
+input:focus {outline: 1px solid #ED458B;}
 
 #reset {
   width: 70%;

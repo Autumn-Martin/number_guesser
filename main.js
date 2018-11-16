@@ -1,10 +1,25 @@
-// ---- check guess ----
-var maxNumValue = 10
-var minNumValue = 1
-let randNum = Math.floor(Math.random() * (maxNumValue + 1));
-const gameResponse = document.getElementById('gameResponse')
+// ---- answer range ----
 
+let minNumValue = 1 // default min
+let maxNumValue = 10 // default max
+var randNum =  Math.floor( Math.random() * (maxNumValue - minNumValue) + minNumValue )
+
+function getNewMinNumValue() {
+  minNumValue = parseInt(document.getElementById('playerMinNum').value);
+  randNum = Math.floor( Math.random() * (maxNumValue - minNumValue) + minNumValue )
+}
+
+function getNewMaxNumValue() {
+  maxNumValue = parseInt(document.getElementById('playerMaxNum').value);
+  randNum = Math.floor( Math.random() * (maxNumValue - minNumValue) + minNumValue )
+}
+
+document.getElementById('playerMinNum').addEventListener('change', getNewMinNumValue)
+document.getElementById('playerMaxNum').addEventListener('change', getNewMaxNumValue)
+
+// ---- check guess ----
 function checkGuess() {
+  const gameResponse = document.getElementById('guessResponse');
   document.getElementById('guessIntro').innerHTML = 'Your last guess was';
   document.getElementById('reset').style.display = 'inline';
 
@@ -30,11 +45,11 @@ function checkGuess() {
       gameResponse.style.backgroundColor = '#ffffff'
   } else {
       gameResponse.textContent = 'Guess again!';
-      gameResponse.style.backgroundColor = '#ffffff'
+      gameResponse.style.backgroundColor = '#fad1e2'
   }
 }
 
-guessSubmission.addEventListener('click', checkGuess);
+document.getElementById('guessSubmission').addEventListener('click', checkGuess);
 
 // ---- display last guess ----
 function displayGuess() {
@@ -48,7 +63,7 @@ function displayGuess() {
   }
 }
 
-guessSubmission.addEventListener('click', displayGuess);
+document.getElementById('guessSubmission').addEventListener('click', displayGuess);
 
 // ---- clear input field & disable clear button ----
 var clearButton = document.getElementById('clear');
@@ -71,14 +86,10 @@ function enableButton() {
   document.getElementById('clear').style.backgroundColor = '#929497'
 }
 
-var guessInput = document.getElementById('guessInput')
-
-guessInput.addEventListener('keypress', enableButton)
+document.getElementById('guessInput').addEventListener('keypress', enableButton)
 
 // ---- reset game ----
-var resetButton = document.getElementById('reset');
-
-resetButton.addEventListener('click', resetGame);
+document.getElementById('reset').addEventListener('click', resetGame);
 
 function resetGame() {
   location.reload()
