@@ -12,6 +12,7 @@ function checkGuess() {
 
   if (playerGuess === randNum) {
       gameResponse.textContent = 'BOOM!';
+      gameResponse.style.backgroundColor = '#ffffff'
   } else if ((guessInput.value === '') || (isNaN(Number(guessInput.value)))) {
       gameResponse.textContent = 'Please enter a number.';
       gameResponse.style.backgroundColor = '#fad1e2';
@@ -23,10 +24,13 @@ function checkGuess() {
       gameResponse.style.backgroundColor = '#fad1e2';
   } else if (playerGuess > randNum){
       gameResponse.textContent = 'That is too high.';
+      gameResponse.style.backgroundColor = '#ffffff'
   } else if (playerGuess < randNum) {
       gameResponse.textContent = 'That is too low.';
+      gameResponse.style.backgroundColor = '#ffffff'
   } else {
       gameResponse.textContent = 'Guess again!';
+      gameResponse.style.backgroundColor = '#ffffff'
   }
 }
 
