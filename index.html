@@ -2,29 +2,38 @@
 <html>
   <head>
     <title>Number Guesser</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="reset.css" />
-    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <meta charset='utf-8'>
+    <link rel='stylesheet' type='text/css' href='reset.css' />
+    <link rel='stylesheet' type='text/css' href='style.css'/>
   </head>
   <body>
 
+    <div>
+      <header>
+        <h1 class="logo-number">Number</h1>
+        <h1 class="logo-guesser">Guesser</h1>
+      </header>
+    </div>
+  </br>
+    <div>
+      <input type='text' id='guessInput' placeholder='Enter your guess'>
+    </div>
+  </br>
+    <div>
+      <input type='submit' id='guessSubmission' class='btn' value='Guess'>
+      <button id="clear" class="btn">Clear</button>
+    </div>
+  </br>
+    <div class="game-response-section">
+      <p id="guessIntro"></p>
+      <div id='guessDisplay'></div>
+      <div class="gameResponse"></div>
+    </div>
 
-    <div>
-      <h1>Number Guesser</h1>
-    </div>
-    <div>
-      <input type="text" id="userGuess" placeholder="Enter your guess">
-    </div>
-    <div>
-      <button onclick="guessDisplayer()">Guess</button>
-    </div>
-    <div>
-      <p>Your last guess was</p>
-      <div id="guessDisplay"></div>
-    </div>
+    <button id="reset" class="btn">Reset</button>
 
 
-    <script src="main.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src='main.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
   </body>
 </html>
