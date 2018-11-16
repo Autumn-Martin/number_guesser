@@ -57,6 +57,8 @@ div {
 
 .gameResponse {
   padding: 1% 1%;
+  margin-left: 6%;
+  margin-right: 6%;
 }
 
 #guessDisplay {
