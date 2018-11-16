@@ -18,8 +18,11 @@ let randNum = Math.floor(Math.random() * (maxNumValue + 1));
 const gameResponse = document.querySelector('.gameResponse')
 
 function checkGuess() {
-  document.getElementById('guessIntro').innerHTML = 'Your last guess was'
+  document.getElementById('guessIntro').innerHTML = 'Your last guess was';
+  document.getElementById('reset').style.display = 'inline';
+
   let playerGuess = parseInt(guessInput.value);
+  
   if (playerGuess === randNum) {
       gameResponse.textContent = 'BOOM!';
   } else if ((guessInput.value === '') || (isNaN(Number(guessInput.value)))) {
