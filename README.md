@@ -24,11 +24,11 @@ Display results and feedback
 [X] If the guess is correct, it should display: “BOOM!”
 
 ### Iteration 2
-[] The input field should only accept numerical entries, within the defined min and max range
+[X] The input field should only accept numerical entries, within the defined min and max range
 [X] The application should display an error message if the guess is not a number (e.g. parseInt() returns NaN).
-[] The application should display an error if the guess is outside of the range of possible answers.
-[] The clear button should be disabled if there is nothing to clear.
-[] The reset button should be disabled if there is nothing to reset.
+[X] The application should display an error if the guess is outside of the range of possible answers.
+[X] The clear button should be disabled if there is nothing to clear.
+[-] The reset button should be disabled if there is nothing to reset.
 
 ### Iteration 3
 [] Add additional inputs that allow the user to specify the minimum/maximum range.
