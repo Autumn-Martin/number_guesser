@@ -6,7 +6,7 @@ header {
   background: #404041;
   padding: 2% 2%;
   height: 100%;
-  margin-bottom: 2vh;
+  margin-bottom: 5%;
 }
 
 h1 {
@@ -15,13 +15,23 @@ h1 {
   padding: 0% 0.2%;
 }
 
+div {
+  margin-bottom: 2%;
+}
+
+.below-header {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
 .btn {
-  background-color: #D0D2D3;
+  background-color: #929497;
   color: #FFFFFF;
-  padding: 1% 1%;
-  font-size: 12px;
+  font-size: 75%;
   border-radius: 12px;
-  width: 17%;
+  width: 33%;
+  margin-left: 2%;
+  margin-right: 2%;
 }
 
 .btn:hover {
@@ -38,15 +48,38 @@ h1 {
 
 .game-response-section {
   color: #404041;
-  font-size: 2.5vh;
+  font-size: 3vh;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+#gameResponse {
+  padding: 1% 1%;
+  margin-left: 6%;
+  margin-right: 6%;
 }
 
 #guessDisplay {
   color: #EB008B;
-  font-size: 20vh;
+  font-size: 13vh;
+  height: 20%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 #guessInput {
   text-align: center;
   font-size: 3vh;
+  margin-bottom: 3%;
+  border: 1px solid #D0D2D3;
+  width: 70%;
+}
+
+#guessInput:focus {outline: 1px solid #ED458B;}
+
+#reset {
+  width: 70%;
+  display: none;
 }

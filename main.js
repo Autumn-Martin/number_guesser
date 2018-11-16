@@ -1,50 +1,82 @@
+// ---- check guess ----
+var maxNumValue = 10
+var minNumValue = 1
+let randNum = Math.floor(Math.random() * (maxNumValue + 1));
+const gameResponse = document.getElementById('gameResponse')
+
+function checkGuess() {
+  document.getElementById('guessIntro').innerHTML = 'Your last guess was';
+  document.getElementById('reset').style.display = 'inline';
+
+  let playerGuess = parseInt(guessInput.value);
+
+  if (playerGuess === randNum) {
+      gameResponse.textContent = 'BOOM!';
+      gameResponse.style.backgroundColor = '#ffffff'
+  } else if ((guessInput.value === '') || (isNaN(Number(guessInput.value)))) {
+      gameResponse.textContent = 'Please enter a number.';
+      gameResponse.style.backgroundColor = '#fad1e2';
+  } else if (playerGuess > maxNumValue) {
+      gameResponse.textContent = 'That number is above the range of possible values.'
+      gameResponse.style.backgroundColor = '#fad1e2';
+  } else if (playerGuess < minNumValue) {
+      gameResponse.textContent = 'That number is below the range of possible values.'
+      gameResponse.style.backgroundColor = '#fad1e2';
+  } else if (playerGuess > randNum){
+      gameResponse.textContent = 'That is too high.';
+      gameResponse.style.backgroundColor = '#ffffff'
+  } else if (playerGuess < randNum) {
+      gameResponse.textContent = 'That is too low.';
+      gameResponse.style.backgroundColor = '#ffffff'
+  } else {
+      gameResponse.textContent = 'Guess again!';
+      gameResponse.style.backgroundColor = '#ffffff'
+  }
+}
+
+guessSubmission.addEventListener('click', checkGuess);
+
 // ---- display last guess ----
 function displayGuess() {
   if (document.getElementById('guessInput').value === '') {
     document.getElementById('guessDisplay').innerHTML = 'nada.'
   } else if (isNaN(Number(document.getElementById('guessInput').value))) {
-    document.getElementById('guessDisplay').innerHTML = 'not a number.'
+    document.getElementById('guessDisplay').innerHTML = 'invalid'
   } else {
-    var guessInput = Math.round(Number(document.getElementById('guessInput').value));
+    var guessInput = parseInt(document.getElementById('guessInput').value);
     document.getElementById('guessDisplay').innerHTML = guessInput;
-  }
-}
-
-guessSubmission.addEventListener('click', checkGuess);
-// ---- check guess ----
-
-let randNum = Math.floor(Math.random() * 11);
-const gameResponse = document.querySelector('.gameResponse')
-
-function checkGuess() {
-  document.getElementById('guessIntro').innerHTML = 'Your last guess was'
-  let playerGuess = Math.round(Number(guessInput.value));
-  if (playerGuess === randNum) {
-    gameResponse.textContent = 'BOOM!';
-  } else if ((guessInput.value === '') || (isNaN(Number(guessInput.value)))) {
-    gameResponse.textContent = 'Please enter a number.';
-  } else if (playerGuess > randNum){
-    gameResponse.textContent = 'That is too high.';
-  } else if (playerGuess < randNum) {
-    gameResponse.textContent = 'That is too low.';
-  } else {
-    gameResponse.textContent = 'Guess again!';
   }
 }
 
 guessSubmission.addEventListener('click', displayGuess);
 
-// ---- clear input field ----
-var clearButton = document.querySelector('#clear');
+// ---- clear input field & disable clear button ----
+var clearButton = document.getElementById('clear');
 
 clearButton.addEventListener('click', clearInput);
 
 function clearInput() {
   document.getElementById('guessInput').value = '';
+  disableButton();
 }
 
+function disableButton() {
+  document.getElementById('clear').disabled = true
+  document.getElementById('clear').style.backgroundColor = '#D0D2D3'
+}
+
+// ---- enable clear button when user begins typing ----
+function enableButton() {
+  document.getElementById('clear').disabled = false
+  document.getElementById('clear').style.backgroundColor = '#929497'
+}
+
+var guessInput = document.getElementById('guessInput')
+
+guessInput.addEventListener('keypress', enableButton)
+
 // ---- reset game ----
-var resetButton = document.querySelector('#reset');
+var resetButton = document.getElementById('reset');
 
 resetButton.addEventListener('click', resetGame);
 
