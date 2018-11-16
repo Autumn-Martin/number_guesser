@@ -1,3 +1,4 @@
+// ---- display last guess ----
 function displayGuess() {
   if (document.getElementById('guessInput').value === '') {
     document.getElementById('guessDisplay').innerHTML = 'nada.'
@@ -8,6 +9,9 @@ function displayGuess() {
     document.getElementById('guessDisplay').innerHTML = guessInput;
   }
 }
+
+guessSubmission.addEventListener('click', checkGuess);
+// ---- check guess ----
 
 let randNum = Math.floor(Math.random() * 11);
 const gameResponse = document.querySelector('.gameResponse')
@@ -28,15 +32,20 @@ function checkGuess() {
   }
 }
 
-guessSubmission.addEventListener('click', checkGuess);
 guessSubmission.addEventListener('click', displayGuess);
 
+// ---- clear input field ----
 var clearButton = document.querySelector('#clear');
-clearButton.addEventListener('click', function() {
-  document.getElementById('guessInput').value = '';
-});
 
+clearButton.addEventListener('click', clearInput);
+
+function clearInput() {
+  document.getElementById('guessInput').value = '';
+}
+
+// ---- reset game ----
 var resetButton = document.querySelector('#reset');
+
 resetButton.addEventListener('click', resetGame);
 
 function resetGame() {
