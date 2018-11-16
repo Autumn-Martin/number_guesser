@@ -12,23 +12,28 @@ function displayGuess() {
 
 guessSubmission.addEventListener('click', checkGuess);
 // ---- check guess ----
-
-let randNum = Math.floor(Math.random() * 11);
+var maxNumValue = 10
+var minNumValue = 1 
+let randNum = Math.floor(Math.random() * (maxNumValue + 1));
 const gameResponse = document.querySelector('.gameResponse')
 
 function checkGuess() {
   document.getElementById('guessIntro').innerHTML = 'Your last guess was'
   let playerGuess = Math.round(Number(guessInput.value));
   if (playerGuess === randNum) {
-    gameResponse.textContent = 'BOOM!';
+      gameResponse.textContent = 'BOOM!';
   } else if ((guessInput.value === '') || (isNaN(Number(guessInput.value)))) {
-    gameResponse.textContent = 'Please enter a number.';
+      gameResponse.textContent = 'Please enter a number.';
+  } else if (playerGuess > maxNumValue) {
+      gameResponse.textContent = 'That number above the range of possible values.'
+  } else if (playerGuess < minNumValue) {
+      gameResponse.textContent = 'That number below the range of possible values.'
   } else if (playerGuess > randNum){
-    gameResponse.textContent = 'That is too high.';
+      gameResponse.textContent = 'That is too high.';
   } else if (playerGuess < randNum) {
-    gameResponse.textContent = 'That is too low.';
+      gameResponse.textContent = 'That is too low.';
   } else {
-    gameResponse.textContent = 'Guess again!';
+      gameResponse.textContent = 'Guess again!';
   }
 }
 
