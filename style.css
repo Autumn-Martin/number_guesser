@@ -99,6 +99,10 @@ input:focus {outline: 1px solid #ED458B;}
   display: none;
 }
 
+#continue {
+  display: none;
+}
+
 #answerRange {
   border: 1px solid #ED458B;
   background-color: #fde8f1;
