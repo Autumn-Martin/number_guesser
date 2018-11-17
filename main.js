@@ -29,6 +29,8 @@ function checkGuess() {
   if (playerGuess === randNum) {
       gameResponse.textContent = 'BOOM!';
       gameResponse.style.backgroundColor = '#ffffff'
+      document.getElementById('guessSubmission').style.display = 'none';
+      document.getElementById('clear').style.display = 'none';
   } else if ((guessInput.value === '') || (isNaN(Number(guessInput.value)))) {
       gameResponse.textContent = 'Please enter a number.';
       gameResponse.style.backgroundColor = '#fad1e2';
