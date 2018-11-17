@@ -2,6 +2,7 @@
 
 let minNumValue = 1 // default min
 let maxNumValue = 10 // default max
+let correctCount = 0
 var randNum =  Math.floor( Math.random() * (maxNumValue - minNumValue) + minNumValue )
 
 function getNewMinNumValue() {
@@ -91,6 +92,25 @@ function enableButton() {
 }
 
 document.getElementById('guessInput').addEventListener('keypress', enableButton)
+
+// ---- continue game ----
+
+function continueGame() {
+  correctCount += 1
+  // clear last answer
+  document.getElementById('guessInput').value = '';
+  // exchange buttons for game play
+  document.getElementById('guessSubmission').style.display = 'inline';
+  document.getElementById('clear').style.display = 'inline';
+  document.getElementById('continue').style.display = 'none';
+}
+
+function regenRandNum() {
+  randNum = Math.floor( Math.random() * (maxNumValue - minNumValue) + minNumValue )
+}
+
+document.getElementById('continue').addEventListener('click', continueGame)
+document.getElementById('continue').addEventListener('click', regenRandNum)
 
 // ---- reset game ----
 document.getElementById('reset').addEventListener('click', resetGame);
