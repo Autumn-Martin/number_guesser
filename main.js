@@ -2,6 +2,7 @@
 
 let minNumValue = 1 // default min
 let maxNumValue = 10 // default max
+let correctCount = 0
 var randNum =  Math.floor( Math.random() * (maxNumValue - minNumValue) + minNumValue )
 
 function getNewMinNumValue() {
@@ -22,12 +23,16 @@ function checkGuess() {
   const gameResponse = document.getElementById('guessResponse');
   document.getElementById('guessIntro').innerHTML = 'Your last guess was';
   document.getElementById('reset').style.display = 'inline';
+  document.getElementById('answerRange').style.display = 'none';
 
   let playerGuess = parseInt(guessInput.value);
 
   if (playerGuess === randNum) {
       gameResponse.textContent = 'BOOM!';
       gameResponse.style.backgroundColor = '#ffffff'
+      document.getElementById('guessSubmission').style.display = 'none';
+      document.getElementById('clear').style.display = 'none';
+      document.getElementById('continue').style.display = 'inline';
   } else if ((guessInput.value === '') || (isNaN(Number(guessInput.value)))) {
       gameResponse.textContent = 'Please enter a number.';
       gameResponse.style.backgroundColor = '#fad1e2';
@@ -54,7 +59,7 @@ document.getElementById('guessSubmission').addEventListener('click', checkGuess)
 // ---- display last guess ----
 function displayGuess() {
   if (document.getElementById('guessInput').value === '') {
-    document.getElementById('guessDisplay').innerHTML = 'nada.'
+    document.getElementById('guessDisplay').innerHTML = 'nada'
   } else if (isNaN(Number(document.getElementById('guessInput').value))) {
     document.getElementById('guessDisplay').innerHTML = 'invalid'
   } else {
@@ -87,6 +92,25 @@ function enableButton() {
 }
 
 document.getElementById('guessInput').addEventListener('keypress', enableButton)
+
+// ---- continue game ----
+
+function continueGame() {
+  correctCount += 1
+  // clear last answer
+  document.getElementById('guessInput').value = '';
+  // exchange buttons for game play
+  document.getElementById('guessSubmission').style.display = 'inline';
+  document.getElementById('clear').style.display = 'inline';
+  document.getElementById('continue').style.display = 'none';
+}
+
+function regenRandNum() {
+  randNum = Math.floor( Math.random() * (maxNumValue - minNumValue) + minNumValue )
+}
+
+document.getElementById('continue').addEventListener('click', continueGame)
+document.getElementById('continue').addEventListener('click', regenRandNum)
 
 // ---- reset game ----
 document.getElementById('reset').addEventListener('click', resetGame);

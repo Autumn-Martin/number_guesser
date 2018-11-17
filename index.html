@@ -15,7 +15,10 @@
       </header>
     </div>
     <div class="below-header">
-      <div>
+      <div id="answerRange">
+        <p>Guess a number</p>
+        <p>between 1 & 10!</p>
+        <p class="range-descriptor">Enter a unique range if you would like: </p>
         <input type='number' id='playerMinNum'> - <input type='number' id='playerMaxNum'>
       </div>
       <div>
@@ -24,6 +27,7 @@
       <div>
         <input type='submit' id='guessSubmission' class='btn' value='Guess'>
         <button id="clear" class="btn">Clear</button>
+        <button id="continue" class="btn">Continue?</button>
       </div>
       <div class="game-response-section">
         <div id="guessIntro"></div>
