@@ -134,7 +134,7 @@ function resetViewToContinueGamePlay() {
   document.getElementById('guessSubmission').style.display = 'inline';
   document.getElementById('clear').style.display = 'inline';
   document.getElementById('continue').style.display = 'none';
-  document.getElementById('range').innerHTML = `range ${minNumValue} to ${maxNumValue}`;
+  document.getElementById('range').innerHTML = `range: ${minNumValue} to ${maxNumValue}`;
 }
 
 function regenRandNum() {
