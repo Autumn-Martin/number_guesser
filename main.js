@@ -22,11 +22,14 @@ document.getElementById('guessSubmission').addEventListener('click', checkGuess)
 
 function checkGuess() {
   changeViewAfterAnyGuess();
+
   const gameResponse = document.getElementById('guessResponse');
   let playerGuess = parseInt(guessInput.value);
 
   if (playerGuess === randNum) {
-    changeViewAfterCorrectGuess();
+      gameResponse.textContent = 'BOOM!';
+      gameResponse.style.backgroundColor = '#ffffff'
+      changeViewAfterCorrectGuess();
   } else if ((guessInput.value === '') || (isNaN(Number(guessInput.value)))) {
       gameResponse.textContent = 'Please enter a number.';
       gameResponse.style.backgroundColor = '#fad1e2';
@@ -53,12 +56,10 @@ function changeViewAfterAnyGuess() {
   document.getElementById('reset').style.display = 'inline';
   document.getElementById('enterAnswerRangeBox').style.display = 'none';
   document.getElementById('range').style.display = 'block';
-  document.getElementById('range').innerHTML = `range ${minNumValue}-${maxNumValue}`;
+  document.getElementById('range').innerHTML = `range: ${minNumValue} to ${maxNumValue}`;
 }
 
 function changeViewAfterCorrectGuess() {
-  gameResponse.textContent = 'BOOM!';
-  gameResponse.style.backgroundColor = '#ffffff'
   document.getElementById('guessSubmission').style.display = 'none';
   document.getElementById('clear').style.display = 'none';
   document.getElementById('continue').style.display = 'inline';
@@ -116,7 +117,7 @@ document.getElementById('continue').addEventListener('click', regenRandNum)
 function continueGame() {
   increaseRange();
   clearLastAnswer();
-  swapButtonsToContinueGamePlay();
+  resetViewToContinueGamePlay();
 }
 
 function increaseRange() {
@@ -128,10 +129,12 @@ function clearLastAnswer() {
   document.getElementById('guessInput').value = '';
 }
 
-function swapButtonsToContinueGamePlay() {
+function resetViewToContinueGamePlay() {
+  document.getElementById('continueMessage').style.display = 'none';
   document.getElementById('guessSubmission').style.display = 'inline';
   document.getElementById('clear').style.display = 'inline';
   document.getElementById('continue').style.display = 'none';
+  document.getElementById('range').innerHTML = `range ${minNumValue} to ${maxNumValue}`;
 }
 
 function regenRandNum() {
