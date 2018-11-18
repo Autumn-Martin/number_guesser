@@ -12,10 +12,11 @@
       <header>
         <h1 class="logo-number">Number</h1>
         <h1 class="logo-guesser">Guesser</h1>
+        <p id="range"></p>
       </header>
     </div>
     <div class="below-header">
-      <div id="answerRange">
+      <div id="enterAnswerRangeBox">
         <p>Guess a number</p>
         <p>between 1 & 10!</p>
         <p class="range-descriptor">Enter a unique range if you would like: </p>
@@ -27,6 +28,9 @@
       <div>
         <input type='submit' id='guessSubmission' class='btn' value='Guess'>
         <button id="clear" class="btn">Clear</button>
+        <div class=continue-message-container>
+          <p id="continueMessage"></p>
+        </div>
         <button id="continue" class="btn">Continue?</button>
       </div>
       <div class="game-response-section">

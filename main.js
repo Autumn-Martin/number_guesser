@@ -23,7 +23,9 @@ function checkGuess() {
   const gameResponse = document.getElementById('guessResponse');
   document.getElementById('guessIntro').innerHTML = 'Your last guess was';
   document.getElementById('reset').style.display = 'inline';
-  document.getElementById('answerRange').style.display = 'none';
+  document.getElementById('enterAnswerRangeBox').style.display = 'none';
+  document.getElementById('range').style.display = 'block';
+  document.getElementById('range').innerHTML = `range ${minNumValue}-${maxNumValue}`;
 
   let playerGuess = parseInt(guessInput.value);
 
@@ -33,6 +35,12 @@ function checkGuess() {
       document.getElementById('guessSubmission').style.display = 'none';
       document.getElementById('clear').style.display = 'none';
       document.getElementById('continue').style.display = 'inline';
+      var nextMinValue = minNumValue - 10
+      var nextMaxValue = maxNumValue + 10
+
+      document.getElementById('continueMessage').innerHTML = `Your next answer will be between ${nextMinValue} & ${nextMaxValue}!`;
+      document.getElementById('continueMessage').style.display = 'inline';
+
   } else if ((guessInput.value === '') || (isNaN(Number(guessInput.value)))) {
       gameResponse.textContent = 'Please enter a number.';
       gameResponse.style.backgroundColor = '#fad1e2';
@@ -97,6 +105,8 @@ document.getElementById('guessInput').addEventListener('keypress', enableButton)
 
 function continueGame() {
   correctCount += 1
+  minNumValue -= 10
+  maxNumValue += 10
   // clear last answer
   document.getElementById('guessInput').value = '';
   // exchange buttons for game play

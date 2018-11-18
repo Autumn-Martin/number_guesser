@@ -103,10 +103,20 @@ input:focus {outline: 1px solid #ED458B;}
   display: none;
 }
 
-#answerRange {
+#continueMessage {
+  display: none;
+  color: #ED458B;
+}
+
+.continue-message-container {
+  margin-top: 2%;
+  margin-bottom: 3%;
+}
+
+#enterAnswerRangeBox {
   border: 1px solid #ED458B;
   background-color: #fde8f1;
-  color: #fad1e2
+  color: #404041;
   /* border: 1px solid #1ea896;
   background-color:#d4f7f3;
   color: #404041; */
@@ -115,6 +125,7 @@ input:focus {outline: 1px solid #ED458B;}
   width: 68%;
   margin: auto;
 }
+
 
 #playerMinNum {
   border: 1px solid #ED458B;
@@ -128,4 +139,10 @@ input:focus {outline: 1px solid #ED458B;}
   /* border: 1px solid #1ea896; */
   /* ^teal background theme */
   width: 10%;
+}
+
+#range {
+  display: none;
+  color: #D0D2D3;
+  margin-top: .5%;
 }
