@@ -39,7 +39,7 @@ Perform the following in the CLI:
 
 [X] The clear button should be disabled if there is nothing to clear.
 
-[-] The reset button should be disabled if there is nothing to reset.
+[X] The reset button should not be displayed if there is nothing to reset.
 
 ### Iteration 3
 [X] Add additional inputs that allow the user to specify the minimum/maximum range.
