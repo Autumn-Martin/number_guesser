@@ -1,11 +1,17 @@
-// ---- answer range ----
-let minNumValue = 1 // default min
-let maxNumValue = 10 // default max
-var randNum =  Math.floor( Math.random() * (maxNumValue - minNumValue) + minNumValue )
-
+// ----------- answer range ----------------------
+// default min; defined with ES6 let because it is expected to change
+let minNumValue = 1
+// default max; defined with ES6 let because it is expected to change
+let maxNumValue = 10
+// randNum; defined with ES6 let because it is expected to change
+let randNum =  Math.floor( Math.random() * (maxNumValue - minNumValue) + minNumValue )
+// event listener that listens for a change in input for element #playerMinNum
+// upon change, runs a function to retrieve the new value as an integer & create a new random number within the resulting range
 document.getElementById('playerMinNum').addEventListener('change', getNewMinNumValue)
+// event listener that listens for a change in input for element #playerMaxNum. Upon change, runs the getNewMaxNumValue
 document.getElementById('playerMaxNum').addEventListener('change', getNewMaxNumValue)
 
+// function to retrieve the new value as an integer & create a new random number within the resulting range
 function getNewMinNumValue() {
   minNumValue = parseInt(document.getElementById('playerMinNum').value);
   randNum = Math.floor( Math.random() * (maxNumValue - minNumValue) + minNumValue )
