@@ -1,7 +1,6 @@
 // ---- answer range ----
 let minNumValue = 1 // default min
 let maxNumValue = 10 // default max
-let correctCount = 0
 var randNum =  Math.floor( Math.random() * (maxNumValue - minNumValue) + minNumValue )
 
 document.getElementById('playerMinNum').addEventListener('change', getNewMinNumValue)
