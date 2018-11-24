@@ -121,14 +121,21 @@ function describeNextAnswerRange() {
 }
 
 // ---------------------- display last guess -----------------------------------
+// When user clicks on "Guess", this event listener calls the function, displayGuess().
 document.getElementById('guessSubmission').addEventListener('click', displayGuess);
-
+// This function (defined by ES5 for nonanonymity) displays the user's last guess if it was valid, 'nada' if the user entered nothing, or 'invalid' if the entry is non-numerical.
 function displayGuess() {
+  // Conditional for when user input is nothing (which causes the input value to equal an empty string).
   if (document.getElementById('guessInput').value === '') {
+    // Display this text instead of the last input.
     document.getElementById('guessDisplay').textContent = 'nada'
+  // Conditional for when user input is non-numerical.
+  // 'NaN' or Not-a-Number is returned when the Number() function attempts to convert a non-numerical value to a number.
   } else if (isNaN(Number(document.getElementById('guessInput').value))) {
+    // Display this text instead of the last input.
     document.getElementById('guessDisplay').textContent = 'invalid'
   } else {
+    // Display the integer version of the last input.
     var guessInput = parseInt(document.getElementById('guessInput').value);
     document.getElementById('guessDisplay').textContent = guessInput;
   }
