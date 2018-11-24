@@ -6,19 +6,19 @@ let maxNumValue = 10
 // 1st assignment of a random number between default min & max values--defined with ES6 let because it is expected to change if user inputs a range.
 let randNum =  Math.floor( Math.random() * (maxNumValue - minNumValue) + minNumValue )
 // Event listener that listens for a change in input for element #playerMinNum. Upon change, runs the function getNewMinNumValue().
-// Generally used getElementById because it is more specific, reliable, & has better performance.
+// (Generally used getElementById because it is more specific, reliable, & has better performance.)
 document.getElementById('playerMinNum').addEventListener('change', getNewMinNumValue)
 // Event listener that listens for a change in input for element #playerMaxNum. Upon change, runs the function getNewMaxNumValue().
 document.getElementById('playerMaxNum').addEventListener('change', getNewMaxNumValue)
 
-// Define function (with ES5 to not be anonymous) to retrieve the new value as an integer & create a new random number within the resulting range.
+// Define function (with ES5 for nonanonymity & readability) to retrieve the new value as an integer & create a new random number within the resulting range.
 function getNewMinNumValue() {
   // Get the input value and use parseInt to convert it from a string to an integer & round it if needed.
   minNumValue = parseInt(document.getElementById('playerMinNum').value);
   // reassign a random value, rounded down to an integer between the updated range min & max.
   randNum = Math.floor( Math.random() * (maxNumValue - minNumValue) + minNumValue )
 }
-// Define function (with ES5 to not be anonymous) to retrieve the new value as an integer & create a new random number within the resulting range.
+// Define function (with ES5 for nonanonymity & readability) to retrieve the new value as an integer & create a new random number within the resulting range.
 function getNewMaxNumValue() {
   // Get the input value and use parseInt to convert it from a string to an integer & round it if needed.
   maxNumValue = parseInt(document.getElementById('playerMaxNum').value);
@@ -29,7 +29,7 @@ function getNewMaxNumValue() {
 // ---------------------- check guess ------------------------------------------
 // When user clicks on "Guess", this event listener calls the checkGuess function.
 document.getElementById('guessSubmission').addEventListener('click', checkGuess);
-// This function contains the logic to check a users guess. Used ES5 syntax--did not want anonymous function.
+// This function contains the logic to check a users guess. Used ES5 syntax for nonanonymity & readability.
 function checkGuess() {
   // Call the function, changeViewAfterAnyGuess()
   changeViewAfterAnyGuess();
@@ -82,7 +82,7 @@ function checkGuess() {
   }
 }
 
-// This function (defined by ES5 for nonanonymity) changes the view of the page after any guess.
+// This function (defined by ES5 for nonanonymity & readability) changes the view of the page after any guess.
 function changeViewAfterAnyGuess() {
   // This line sets the text content of the element with id guessIntro to this string, which displays the string on the page.
   document.getElementById('guessIntro').textContent = 'Your last guess was';
@@ -96,7 +96,7 @@ function changeViewAfterAnyGuess() {
   document.getElementById('range').textContent = `range: ${minNumValue} to ${maxNumValue}`;
 }
 
-// This function (defineed by ES5 for nonanonymity) prepares a different view for a user after a correct guess.
+// This function (defineed by ES5 for nonanonymity & readability) prepares a different view for a user after a correct guess.
 function changeViewAfterCorrectGuess() {
   // Hide guess button.
   document.getElementById('guessSubmission').style.display = 'none';
@@ -108,7 +108,7 @@ function changeViewAfterCorrectGuess() {
   describeNextAnswerRange();
 }
 
-// This function (defined by ES5 for nonanonymity) displays a message that explains the next range without increasing the current range.
+// This function (defined by ES5 for nonanonymity & readability) displays a message that explains the next range without increasing the current range.
 function describeNextAnswerRange() {
   // Assign the next min value, which will be decreased by 10, with ES6 let to denote that it will change.
   let nextMinValue = minNumValue - 10
@@ -123,75 +123,99 @@ function describeNextAnswerRange() {
 // ---------------------- display last guess -----------------------------------
 // When user clicks on "Guess", this event listener calls the function, displayGuess().
 document.getElementById('guessSubmission').addEventListener('click', displayGuess);
-// This function (defined by ES5 for nonanonymity) displays the user's last guess if it was valid, 'nada' if the user entered nothing, or 'invalid' if the entry is non-numerical.
+// This function (defined by ES5 for nonanonymity & readability) displays the user's last guess if it was valid, 'nada' if the user entered nothing, or 'invalid' if the entry is non-numerical.
 function displayGuess() {
   // Conditional for when user input is nothing (which causes the input value to equal an empty string).
   if (document.getElementById('guessInput').value === '') {
     // Display this text instead of the last input.
     document.getElementById('guessDisplay').textContent = 'nada'
   // Conditional for when user input is non-numerical.
-  // 'NaN' or Not-a-Number is returned when the Number() function attempts to convert a non-numerical value to a number.
+    // 'NaN' or Not-a-Number is returned when the Number() function attempts to convert a non-numerical value to a number.
   } else if (isNaN(Number(document.getElementById('guessInput').value))) {
     // Display this text instead of the last input.
     document.getElementById('guessDisplay').textContent = 'invalid'
+  // Conditional for when user input is valid.
   } else {
-    // Display the integer version of the last input.
-    var guessInput = parseInt(document.getElementById('guessInput').value);
+    // Define the integer value of user input (using ES6 let to denote that this value will change).
+    let guessInput = parseInt(document.getElementById('guessInput').value);
+    // Display the integer version of the last input (defined as guessInput above).
     document.getElementById('guessDisplay').textContent = guessInput;
   }
 }
 
 // ---------------------- clear input field & disable clear button -------------
-var clearButton = document.getElementById('clear');
-
-clearButton.addEventListener('click', clearInput);
-
+// When user clicks on 'Clear', this event listener calls the function, clearInput().
+document.getElementById('clear').addEventListener('click', clearInput);
+// This function (defined by ES5 for nonanonymity & readability) removes any text currently residing in the guess input field, & disables the clear enableButton
 function clearInput() {
+  // Clear guess input field by setting its value equal to an empty string.
   document.getElementById('guessInput').value = '';
+  // Call the function, disableButton(), while there is no need to click it.
   disableButton();
 }
 
+// This function (defined by ES5 for nonanonymity & readability) disables the clear button & lightens its color.
 function disableButton() {
+  // Disable the clear button.
   document.getElementById('clear').disabled = true
+  // Change the color of the clear button from dark to light grey to signify that it is disabled.
   document.getElementById('clear').style.backgroundColor = '#D0D2D3'
 }
 
 // ---------------------- enable clear button when user begins typing ----------
+// When a user types in the field for guess input, this event listener will call the function, enableButton().
 document.getElementById('guessInput').addEventListener('keypress', enableButton)
-
+// This function (defined by ES5 for nonanonymity & readability) re-enables the button to clear the guess input field.
 function enableButton() {
+  // Un-disable clear button.
   document.getElementById('clear').disabled = false
+  // Reset clear button color to the darker appearance it has when not disabled.
   document.getElementById('clear').style.backgroundColor = '#929497'
 }
 
 // ---------------------- continue game ----------------------------------------
+// When user clicks on continue, this event listener runs the continueGame() function.
 document.getElementById('continue').addEventListener('click', continueGame)
+// When user clicks on continue, this event listener runs the regenRandNum() function.
 document.getElementById('continue').addEventListener('click', regenRandNum)
-
+/* This function (defined by ES5 for nonanonymity & readability) initializes for the game to be continued by:
+  broadening the range that contains the answer, clearing the last user input, & preparing the view for the user */
 function continueGame() {
+  // Calls the function to increase range.
   increaseRange();
+  // Calls the function to clear last answer.
   clearLastAnswer();
+  // Calls the function to reset view to continue game play.
   resetViewToContinueGamePlay();
 }
-
+// This function (defined by ES5 for nonanonymity & readability) broadens the range that contains the answer.
 function increaseRange() {
+  // Reassign minNumValue to equal itself subtracted by 10.
   minNumValue -= 10
+  // Reassign maxNumValue to equal itself added by 10.
   maxNumValue += 10
 }
-
+// This function (defined by ES5 for nonanonymity & readability) removes the last answer from view.
 function clearLastAnswer() {
+  // Remove the last answer from view by setting it equal to an empty string.
   document.getElementById('guessInput').value = '';
 }
-
+// This function (defined by ES5 for nonanonymity & readability) resets the view to game play mode.
 function resetViewToContinueGamePlay() {
+  // Hide continue message.
   document.getElementById('continueMessage').style.display = 'none';
+  // Show submit button.
   document.getElementById('guessSubmission').style.display = 'inline';
+  // Show clear button.
   document.getElementById('clear').style.display = 'inline';
+  // Hide continue button.
   document.getElementById('continue').style.display = 'none';
+  // Update range text content to new range.
   document.getElementById('range').textContent = `range: ${minNumValue} to ${maxNumValue}`;
 }
-
+// This function (defined by ES5 for nonanonymity & readability) creates a new random integer within the updated current range.
 function regenRandNum() {
+  // Reassign randNum to a new random integer within the current range.
   randNum = Math.floor( Math.random() * (maxNumValue - minNumValue) + minNumValue )
 }
 
