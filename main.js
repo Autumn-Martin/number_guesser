@@ -141,8 +141,4 @@ function regenRandNum() {
 }
 
 // ---- reset game ----
-document.getElementById('reset').addEventListener('click', resetGame);
-
-function resetGame() {
-  location.reload()
-}
+document.getElementById('reset').addEventListener('click', () => location.reload());
