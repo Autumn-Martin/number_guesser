@@ -97,7 +97,7 @@ input:focus {outline: 1px solid #ED458B;}
   width: 70%;
 }
 
-#reset {
+#resetButton {
   width: 70%;
   display: none;
 }

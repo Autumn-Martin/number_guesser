@@ -1,4 +1,4 @@
-// ---- answer range ----
+// ---------------------- answer range -----------------------------------------
 let minNumValue = 1 // default min
 let maxNumValue = 10 // default max
 let randNum =  Math.floor( Math.random() * (maxNumValue - minNumValue) + minNumValue )
@@ -10,14 +10,13 @@ function getNewMinNumValue() {
   minNumValue = parseInt(document.getElementById('playerMinNum').value);
   randNum = Math.floor( Math.random() * (maxNumValue - minNumValue) + minNumValue )
 }
-
 function getNewMaxNumValue() {
   maxNumValue = parseInt(document.getElementById('playerMaxNum').value);
   randNum = Math.floor( Math.random() * (maxNumValue - minNumValue) + minNumValue )
 }
 
-// ---- check guess ----
-document.getElementById('guessSubmission').addEventListener('click', checkGuess);
+// ---------------------- check guess ------------------------------------------
+document.getElementById('submitGuessButton').addEventListener('click', checkGuess);
 
 function checkGuess() {
   changeViewAfterAnyGuess();
@@ -52,14 +51,14 @@ function checkGuess() {
 
 function changeViewAfterAnyGuess() {
   document.getElementById('guessIntro').textContent = 'Your last guess was';
-  document.getElementById('reset').style.display = 'inline';
+  document.getElementById('resetButton').style.display = 'inline';
   document.getElementById('enterAnswerRangeBox').style.display = 'none';
   document.getElementById('range').style.display = 'block';
   document.getElementById('range').textContent = `range: ${minNumValue} to ${maxNumValue}`;
 }
 
 function changeViewAfterCorrectGuess() {
-  document.getElementById('guessSubmission').style.display = 'none';
+  document.getElementById('submitGuessButton').style.display = 'none';
   document.getElementById('clear').style.display = 'none';
   document.getElementById('continue').style.display = 'inline';
   describeNextAnswerRange();
@@ -72,8 +71,8 @@ function describeNextAnswerRange() {
   document.getElementById('continueMessage').style.display = 'inline';
 }
 
-// ---- display last guess ----
-document.getElementById('guessSubmission').addEventListener('click', displayGuess);
+// ---------------------- display last guess -----------------------------------
+document.getElementById('submitGuessButton').addEventListener('click', displayGuess);
 
 function displayGuess() {
   if (document.getElementById('guessInput').value === '') {
@@ -86,7 +85,7 @@ function displayGuess() {
   }
 }
 
-// ---- clear input field & disable clear button ----
+// ---------------------- clear input field & disable clear button -------------
 document.getElementById('clear').addEventListener('click', clearInput);
 
 function clearInput() {
@@ -99,7 +98,7 @@ function disableButton() {
   document.getElementById('clear').style.backgroundColor = '#D0D2D3'
 }
 
-// ---- enable clear button when user begins typing ----
+// ---------------------- enable clear button when user begins typing ----------
 document.getElementById('guessInput').addEventListener('keypress', enableButton)
 
 function enableButton() {
@@ -107,7 +106,7 @@ function enableButton() {
   document.getElementById('clear').style.backgroundColor = '#929497'
 }
 
-// ---- continue game ----
+// ---------------------- continue game ----------------------------------------
 document.getElementById('continue').addEventListener('click', continueGame)
 document.getElementById('continue').addEventListener('click', regenRandNum)
 
@@ -128,7 +127,7 @@ function clearLastAnswer() {
 
 function resetViewToContinueGamePlay() {
   document.getElementById('continueMessage').style.display = 'none';
-  document.getElementById('guessSubmission').style.display = 'inline';
+  document.getElementById('submitGuessButton').style.display = 'inline';
   document.getElementById('clear').style.display = 'inline';
   document.getElementById('continue').style.display = 'none';
   document.getElementById('range').textContent = `range: ${minNumValue} to ${maxNumValue}`;
@@ -138,5 +137,5 @@ function regenRandNum() {
   randNum = Math.floor( Math.random() * (maxNumValue - minNumValue) + minNumValue )
 }
 
-// ---- reset game ----
-document.getElementById('reset').addEventListener('click', () => location.reload());
+// ---------------------- reset game -------------------------------------------
+document.getElementById('resetButton').addEventListener('click', () => location.reload());
