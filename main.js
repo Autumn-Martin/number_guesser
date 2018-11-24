@@ -1,33 +1,35 @@
-// ----------- answer range ----------------------
-// assign default min--defined with ES6 let because it is expected to change
+// ---------------------- answer range -----------------------------------------
+// Assign default min--defined with ES6 let because it is expected to change
 let minNumValue = 1
-// assign default max--defined with ES6 let because it is expected to change
+// Assign default max--defined with ES6 let because it is expected to change
 let maxNumValue = 10
 // 1st assignment of a random number between default min & max values--defined with ES6 let because it is expected to change if user inputs a range
 let randNum =  Math.floor( Math.random() * (maxNumValue - minNumValue) + minNumValue )
 // Event listener that listens for a change in input for element #playerMinNum. Upon change, runs the function getNewMinNumValue()
+// Used getElementById because it is more specific, reliable, & has better performance
 document.getElementById('playerMinNum').addEventListener('change', getNewMinNumValue)
 // Event listener that listens for a change in input for element #playerMaxNum. Upon change, runs the function getNewMaxNumValue()
 document.getElementById('playerMaxNum').addEventListener('change', getNewMaxNumValue)
 
-// function to retrieve the new value as an integer & create a new random number within the resulting range
+// Define function (with ES5 to not be anonymous) to retrieve the new value as an integer & create a new random number within the resulting range.
 function getNewMinNumValue() {
-  // get the input value and use parseInt to convert it from a string to an integer & round it if needed
+  // Get the input value and use parseInt to convert it from a string to an integer & round it if needed
   minNumValue = parseInt(document.getElementById('playerMinNum').value);
   // reassign a random value, rounded down to an integer between the updated range min & max
   randNum = Math.floor( Math.random() * (maxNumValue - minNumValue) + minNumValue )
 }
-// function to retrieve the new value as an integer & create a new random number within the resulting range
+// Define function (with ES5 to not be anonymous) to retrieve the new value as an integer & create a new random number within the resulting range.
 function getNewMaxNumValue() {
-  // get the input value and use parseInt to convert it from a string to an integer & round it if needed.
+  // Get the input value and use parseInt to convert it from a string to an integer & round it if needed.
   maxNumValue = parseInt(document.getElementById('playerMaxNum').value);
-  // reassign a random value, rounded down to an integer between the updated range min & max
+  // Reassign a random value, rounded down to an integer between the updated range min & max
   randNum = Math.floor( Math.random() * (maxNumValue - minNumValue) + minNumValue )
 }
 
-// ---- check guess ----
+// ---------------------- check guess ------------------------------------------
+// When user clicks on "Guess", this event listener calls the checkGuess function.
 document.getElementById('guessSubmission').addEventListener('click', checkGuess);
-
+// This function contains the logic to check a users guess. Used ES5 syntax--did not want anonymous function.
 function checkGuess() {
   changeViewAfterAnyGuess();
 
@@ -81,7 +83,7 @@ function describeNextAnswerRange() {
   document.getElementById('continueMessage').style.display = 'inline';
 }
 
-// ---- display last guess ----
+// ---------------------- display last guess -----------------------------------
 document.getElementById('guessSubmission').addEventListener('click', displayGuess);
 
 function displayGuess() {
@@ -95,7 +97,7 @@ function displayGuess() {
   }
 }
 
-// ---- clear input field & disable clear button ----
+// ---------------------- clear input field & disable clear button -------------
 var clearButton = document.getElementById('clear');
 
 clearButton.addEventListener('click', clearInput);
@@ -110,7 +112,7 @@ function disableButton() {
   document.getElementById('clear').style.backgroundColor = '#D0D2D3'
 }
 
-// ---- enable clear button when user begins typing ----
+// ---------------------- enable clear button when user begins typing ----------
 document.getElementById('guessInput').addEventListener('keypress', enableButton)
 
 function enableButton() {
@@ -118,7 +120,7 @@ function enableButton() {
   document.getElementById('clear').style.backgroundColor = '#929497'
 }
 
-// ---- continue game ----
+// ---------------------- continue game ----------------------------------------
 document.getElementById('continue').addEventListener('click', continueGame)
 document.getElementById('continue').addEventListener('click', regenRandNum)
 
@@ -149,9 +151,6 @@ function regenRandNum() {
   randNum = Math.floor( Math.random() * (maxNumValue - minNumValue) + minNumValue )
 }
 
-// ---- reset game ----
-document.getElementById('reset').addEventListener('click', resetGame);
-
-function resetGame() {
-  location.reload()
-}
+// ---------------------- reset game -------------------------------------------
+// When user clicks on "Reset", this event listener will reload the page. Used ES6 syntax here to make this one line. 
+document.getElementById('reset').addEventListener('click', () => location.reload());
