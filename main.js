@@ -39,8 +39,11 @@ function checkGuess() {
   let playerGuess = parseInt(guessInput.value);
   // Conditional for when user guesses correctly.
   if (playerGuess === randNum) {
+      // Display this text.
       gameResponse.textContent = 'BOOM!';
+      // Set a white background for this text (also overrides the previous background if it was pink).
       gameResponse.style.backgroundColor = '#ffffff';
+      //
       changeViewAfterCorrectGuess();
   // Conditional for when user enters non-numerical values or nothing at all.
   } else if ((guessInput.value === '') || (isNaN(Number(guessInput.value)))) {
@@ -58,9 +61,11 @@ function checkGuess() {
   } else if (playerGuess > randNum){
       gameResponse.textContent = 'That is too high.';
       gameResponse.style.backgroundColor = '#ffffff'
+  // Conditional for when user enters a guess that is below the answer.
   } else if (playerGuess < randNum) {
       gameResponse.textContent = 'That is too low.';
       gameResponse.style.backgroundColor = '#ffffff'
+  // Conditional for case when non other conditions are met.
   } else {
       gameResponse.textContent = 'Guess again!';
       gameResponse.style.backgroundColor = '#fad1e2'
@@ -69,7 +74,7 @@ function checkGuess() {
 
 // This function (defined by ES5 for nonanonymity) changes the view of the page after any guess.
 function changeViewAfterAnyGuess() {
-  // This line sets the inner HTML of the element with id guessIntro to this string, which displays the string on the page.
+  // This line sets the text content of the element with id guessIntro to this string, which displays the string on the page.
   document.getElementById('guessIntro').textContent = 'Your last guess was';
   // This line changes the display of the #reset element from none to inline, causing the reset button to appear on the page now that it may be needed.
   document.getElementById('reset').style.display = 'inline';
@@ -77,18 +82,23 @@ function changeViewAfterAnyGuess() {
   document.getElementById('enterAnswerRangeBox').style.display = 'none';
   // This line changes the display of the #range element from none to block, so that a range appears at the top of the page now that it has been set.
   document.getElementById('range').style.display = 'block';
-  // This line sets the inner HTML of the #range element to this string and uses string interpolation to include the min and max values. This displays the string describing the range on the page.
+  // This line sets the text content of the #range element to this string and uses string interpolation to include the min and max values. This displays the string describing the range on the page.
   document.getElementById('range').textContent = `range: ${minNumValue} to ${maxNumValue}`;
 }
 
 function changeViewAfterCorrectGuess() {
+  // Hide guess button.
   document.getElementById('guessSubmission').style.display = 'none';
+  // Hide clear button.
   document.getElementById('clear').style.display = 'none';
+  // Display continue button.
   document.getElementById('continue').style.display = 'inline';
+  // Call describeNextAnswerRange() function.
   describeNextAnswerRange();
 }
 
 function describeNextAnswerRange() {
+  // 
   var nextMinValue = minNumValue - 10
   var nextMaxValue = maxNumValue + 10
   document.getElementById('continueMessage').textContent = `Your next answer will be between ${nextMinValue} & ${nextMaxValue}!`;
