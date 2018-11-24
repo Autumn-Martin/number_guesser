@@ -1,24 +1,27 @@
 // ----------- answer range ----------------------
-// default min; defined with ES6 let because it is expected to change
+// assign default min--defined with ES6 let because it is expected to change
 let minNumValue = 1
-// default max; defined with ES6 let because it is expected to change
+// assign default max--defined with ES6 let because it is expected to change
 let maxNumValue = 10
-// randNum; defined with ES6 let because it is expected to change
+// 1st assignment of a random number between default min & max values--defined with ES6 let because it is expected to change if user inputs a range
 let randNum =  Math.floor( Math.random() * (maxNumValue - minNumValue) + minNumValue )
-// event listener that listens for a change in input for element #playerMinNum
-// upon change, runs a function to retrieve the new value as an integer & create a new random number within the resulting range
+// Event listener that listens for a change in input for element #playerMinNum. Upon change, runs the function getNewMinNumValue()
 document.getElementById('playerMinNum').addEventListener('change', getNewMinNumValue)
-// event listener that listens for a change in input for element #playerMaxNum. Upon change, runs the getNewMaxNumValue
+// Event listener that listens for a change in input for element #playerMaxNum. Upon change, runs the function getNewMaxNumValue()
 document.getElementById('playerMaxNum').addEventListener('change', getNewMaxNumValue)
 
 // function to retrieve the new value as an integer & create a new random number within the resulting range
 function getNewMinNumValue() {
+  // get the input value and use parseInt to convert it from a string to an integer & round it if needed
   minNumValue = parseInt(document.getElementById('playerMinNum').value);
+  // reassign a random value, rounded down to an integer between the updated range min & max
   randNum = Math.floor( Math.random() * (maxNumValue - minNumValue) + minNumValue )
 }
-
+// function to retrieve the new value as an integer & create a new random number within the resulting range
 function getNewMaxNumValue() {
+  // get the input value and use parseInt to convert it from a string to an integer & round it if needed.
   maxNumValue = parseInt(document.getElementById('playerMaxNum').value);
+  // reassign a random value, rounded down to an integer between the updated range min & max
   randNum = Math.floor( Math.random() * (maxNumValue - minNumValue) + minNumValue )
 }
 
