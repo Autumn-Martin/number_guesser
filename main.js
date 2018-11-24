@@ -70,7 +70,7 @@ function checkGuess() {
 // This function (defined by ES5 for nonanonymity) changes the view of the page after any guess.
 function changeViewAfterAnyGuess() {
   // This line sets the inner HTML of the element with id guessIntro to this string, which displays the string on the page.
-  document.getElementById('guessIntro').innerHTML = 'Your last guess was';
+  document.getElementById('guessIntro').textContent = 'Your last guess was';
   // This line changes the display of the #reset element from none to inline, causing the reset button to appear on the page now that it may be needed.
   document.getElementById('reset').style.display = 'inline';
   // This line changes the display of the #enterAnswerRangeBox element to none, so that users nolonger have the option to change the range after it has been set without reseting the game.
@@ -78,7 +78,7 @@ function changeViewAfterAnyGuess() {
   // This line changes the display of the #range element from none to block, so that a range appears at the top of the page now that it has been set.
   document.getElementById('range').style.display = 'block';
   // This line sets the inner HTML of the #range element to this string and uses string interpolation to include the min and max values. This displays the string describing the range on the page.
-  document.getElementById('range').innerHTML = `range: ${minNumValue} to ${maxNumValue}`;
+  document.getElementById('range').textContent = `range: ${minNumValue} to ${maxNumValue}`;
 }
 
 function changeViewAfterCorrectGuess() {
@@ -91,7 +91,7 @@ function changeViewAfterCorrectGuess() {
 function describeNextAnswerRange() {
   var nextMinValue = minNumValue - 10
   var nextMaxValue = maxNumValue + 10
-  document.getElementById('continueMessage').innerHTML = `Your next answer will be between ${nextMinValue} & ${nextMaxValue}!`;
+  document.getElementById('continueMessage').textContent = `Your next answer will be between ${nextMinValue} & ${nextMaxValue}!`;
   document.getElementById('continueMessage').style.display = 'inline';
 }
 
@@ -100,12 +100,12 @@ document.getElementById('guessSubmission').addEventListener('click', displayGues
 
 function displayGuess() {
   if (document.getElementById('guessInput').value === '') {
-    document.getElementById('guessDisplay').innerHTML = 'nada'
+    document.getElementById('guessDisplay').textContent = 'nada'
   } else if (isNaN(Number(document.getElementById('guessInput').value))) {
-    document.getElementById('guessDisplay').innerHTML = 'invalid'
+    document.getElementById('guessDisplay').textContent = 'invalid'
   } else {
     var guessInput = parseInt(document.getElementById('guessInput').value);
-    document.getElementById('guessDisplay').innerHTML = guessInput;
+    document.getElementById('guessDisplay').textContent = guessInput;
   }
 }
 
@@ -156,7 +156,7 @@ function resetViewToContinueGamePlay() {
   document.getElementById('guessSubmission').style.display = 'inline';
   document.getElementById('clear').style.display = 'inline';
   document.getElementById('continue').style.display = 'none';
-  document.getElementById('range').innerHTML = `range: ${minNumValue} to ${maxNumValue}`;
+  document.getElementById('range').textContent = `range: ${minNumValue} to ${maxNumValue}`;
 }
 
 function regenRandNum() {
