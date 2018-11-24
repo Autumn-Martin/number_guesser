@@ -66,8 +66,8 @@ function changeViewAfterCorrectGuess() {
 }
 
 function describeNextAnswerRange() {
-  var nextMinValue = minNumValue - 10
-  var nextMaxValue = maxNumValue + 10
+  let nextMinValue = minNumValue - 10
+  let nextMaxValue = maxNumValue + 10
   document.getElementById('continueMessage').textContent = `Your next answer will be between ${nextMinValue} & ${nextMaxValue}!`;
   document.getElementById('continueMessage').style.display = 'inline';
 }
