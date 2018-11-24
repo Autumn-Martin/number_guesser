@@ -110,11 +110,16 @@ function changeViewAfterCorrectGuess() {
 
 // This function (defined by ES5 for nonanonymity & readability) displays a message that explains the next range without increasing the current range.
 function describeNextAnswerRange() {
+<<<<<<< HEAD
   // Assign the next min value, which will be decreased by 10, with ES6 let to denote that it will change.
   let nextMinValue = minNumValue - 10
   // Assign the next max value, which will be increased by 10, with ES6 let to denote that it will change.
   let nextMaxValue = maxNumValue + 10
   // Set text content of element #continueMessage to a string message that includes string interpolation of the next min & max values.
+=======
+  let nextMinValue = minNumValue - 10
+  let nextMaxValue = maxNumValue + 10
+>>>>>>> small_changes
   document.getElementById('continueMessage').textContent = `Your next answer will be between ${nextMinValue} & ${nextMaxValue}!`;
   // Display element #continueMessage so that user will see its text content.
   document.getElementById('continueMessage').style.display = 'inline';
@@ -136,17 +141,27 @@ function displayGuess() {
     document.getElementById('guessDisplay').textContent = 'invalid'
   // Conditional for when user input is valid.
   } else {
+<<<<<<< HEAD
     // Define the integer value of user input (using ES6 let to denote that this value will change).
     let guessInput = parseInt(document.getElementById('guessInput').value);
     // Display the integer version of the last input (defined as guessInput above).
+=======
+    let guessInput = parseInt(document.getElementById('guessInput').value);
+>>>>>>> small_changes
     document.getElementById('guessDisplay').textContent = guessInput;
   }
 }
 
+<<<<<<< HEAD
 // ---------------------- clear input field & disable clear button -------------
 // When user clicks on 'Clear', this event listener calls the function, clearInput().
 document.getElementById('clear').addEventListener('click', clearInput);
 // This function (defined by ES5 for nonanonymity & readability) removes any text currently residing in the guess input field, & disables the clear enableButton
+=======
+// ---- clear input field & disable clear button ----
+document.getElementById('clear').addEventListener('click', clearInput);
+
+>>>>>>> small_changes
 function clearInput() {
   // Clear guess input field by setting its value equal to an empty string.
   document.getElementById('guessInput').value = '';
