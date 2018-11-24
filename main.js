@@ -51,11 +51,11 @@ function checkGuess() {
 }
 
 function changeViewAfterAnyGuess() {
-  document.getElementById('guessIntro').innerHTML = 'Your last guess was';
+  document.getElementById('guessIntro').textContent = 'Your last guess was';
   document.getElementById('reset').style.display = 'inline';
   document.getElementById('enterAnswerRangeBox').style.display = 'none';
   document.getElementById('range').style.display = 'block';
-  document.getElementById('range').innerHTML = `range: ${minNumValue} to ${maxNumValue}`;
+  document.getElementById('range').textContent = `range: ${minNumValue} to ${maxNumValue}`;
 }
 
 function changeViewAfterCorrectGuess() {
@@ -68,7 +68,7 @@ function changeViewAfterCorrectGuess() {
 function describeNextAnswerRange() {
   var nextMinValue = minNumValue - 10
   var nextMaxValue = maxNumValue + 10
-  document.getElementById('continueMessage').innerHTML = `Your next answer will be between ${nextMinValue} & ${nextMaxValue}!`;
+  document.getElementById('continueMessage').textContent = `Your next answer will be between ${nextMinValue} & ${nextMaxValue}!`;
   document.getElementById('continueMessage').style.display = 'inline';
 }
 
@@ -77,12 +77,12 @@ document.getElementById('guessSubmission').addEventListener('click', displayGues
 
 function displayGuess() {
   if (document.getElementById('guessInput').value === '') {
-    document.getElementById('guessDisplay').innerHTML = 'nada'
+    document.getElementById('guessDisplay').textContent = 'nada'
   } else if (isNaN(Number(document.getElementById('guessInput').value))) {
-    document.getElementById('guessDisplay').innerHTML = 'invalid'
+    document.getElementById('guessDisplay').textContent = 'invalid'
   } else {
     var guessInput = parseInt(document.getElementById('guessInput').value);
-    document.getElementById('guessDisplay').innerHTML = guessInput;
+    document.getElementById('guessDisplay').textContent = guessInput;
   }
 }
 
@@ -133,7 +133,7 @@ function resetViewToContinueGamePlay() {
   document.getElementById('guessSubmission').style.display = 'inline';
   document.getElementById('clear').style.display = 'inline';
   document.getElementById('continue').style.display = 'none';
-  document.getElementById('range').innerHTML = `range: ${minNumValue} to ${maxNumValue}`;
+  document.getElementById('range').textContent = `range: ${minNumValue} to ${maxNumValue}`;
 }
 
 function regenRandNum() {
