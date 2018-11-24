@@ -6,7 +6,7 @@ let maxNumValue = 10
 // 1st assignment of a random number between default min & max values--defined with ES6 let because it is expected to change if user inputs a range
 let randNum =  Math.floor( Math.random() * (maxNumValue - minNumValue) + minNumValue )
 // Event listener that listens for a change in input for element #playerMinNum. Upon change, runs the function getNewMinNumValue()
-// Used getElementById because it is more specific, reliable, & has better performance
+// Generally used getElementById because it is more specific, reliable, & has better performance
 document.getElementById('playerMinNum').addEventListener('change', getNewMinNumValue)
 // Event listener that listens for a change in input for element #playerMaxNum. Upon change, runs the function getNewMaxNumValue()
 document.getElementById('playerMaxNum').addEventListener('change', getNewMaxNumValue)
@@ -31,6 +31,7 @@ function getNewMaxNumValue() {
 document.getElementById('guessSubmission').addEventListener('click', checkGuess);
 // This function contains the logic to check a users guess. Used ES5 syntax--did not want anonymous function.
 function checkGuess() {
+  // Call the function, changeViewAfterAnyGuess()
   changeViewAfterAnyGuess();
 
   const gameResponse = document.getElementById('guessResponse');
@@ -61,11 +62,17 @@ function checkGuess() {
   }
 }
 
+// This function (defined by ES5 for nonanonymity) changes the view of the page after any guess.
 function changeViewAfterAnyGuess() {
+  // This line sets the inner HTML of the element with id guessIntro to this string, which displays the string on the page.
   document.getElementById('guessIntro').innerHTML = 'Your last guess was';
+  // This line changes the display of the #reset element from none to inline, causing the reset button to appear on the page now that it may be needed.
   document.getElementById('reset').style.display = 'inline';
+  // This line changes the display of the #enterAnswerRangeBox element to none, so that users nolonger have the option to change the range after it has been set without reseting the game.
   document.getElementById('enterAnswerRangeBox').style.display = 'none';
+  // This line changes the display of the #range element from none to block, so that a range appears at the top of the page now that it has been set.
   document.getElementById('range').style.display = 'block';
+  // This line sets the inner HTML of the #range element to this string and uses string interpolation to include the min and max values. This displays the string describing the range on the page.
   document.getElementById('range').innerHTML = `range: ${minNumValue} to ${maxNumValue}`;
 }
 
@@ -152,5 +159,5 @@ function regenRandNum() {
 }
 
 // ---------------------- reset game -------------------------------------------
-// When user clicks on "Reset", this event listener will reload the page. Used ES6 syntax here to make this one line. 
+// When user clicks on "Reset", this event listener will reload the page. Used ES6 syntax here to make this one line.
 document.getElementById('reset').addEventListener('click', () => location.reload());
