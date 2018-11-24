@@ -81,15 +81,13 @@ function displayGuess() {
   } else if (isNaN(Number(document.getElementById('guessInput').value))) {
     document.getElementById('guessDisplay').textContent = 'invalid'
   } else {
-    var guessInput = parseInt(document.getElementById('guessInput').value);
+    let guessInput = parseInt(document.getElementById('guessInput').value);
     document.getElementById('guessDisplay').textContent = guessInput;
   }
 }
 
 // ---- clear input field & disable clear button ----
-var clearButton = document.getElementById('clear');
-
-clearButton.addEventListener('click', clearInput);
+document.getElementById('clear').addEventListener('click', clearInput);
 
 function clearInput() {
   document.getElementById('guessInput').value = '';
