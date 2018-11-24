@@ -1,28 +1,28 @@
 // ---------------------- answer range -----------------------------------------
-// Assign default min--defined with ES6 let because it is expected to change
+// Assign default min--defined with ES6 let because it is expected to change.
 let minNumValue = 1
-// Assign default max--defined with ES6 let because it is expected to change
+// Assign default max--defined with ES6 let because it is expected to change.
 let maxNumValue = 10
-// 1st assignment of a random number between default min & max values--defined with ES6 let because it is expected to change if user inputs a range
+// 1st assignment of a random number between default min & max values--defined with ES6 let because it is expected to change if user inputs a range.
 let randNum =  Math.floor( Math.random() * (maxNumValue - minNumValue) + minNumValue )
-// Event listener that listens for a change in input for element #playerMinNum. Upon change, runs the function getNewMinNumValue()
-// Generally used getElementById because it is more specific, reliable, & has better performance
+// Event listener that listens for a change in input for element #playerMinNum. Upon change, runs the function getNewMinNumValue().
+// Generally used getElementById because it is more specific, reliable, & has better performance.
 document.getElementById('playerMinNum').addEventListener('change', getNewMinNumValue)
-// Event listener that listens for a change in input for element #playerMaxNum. Upon change, runs the function getNewMaxNumValue()
+// Event listener that listens for a change in input for element #playerMaxNum. Upon change, runs the function getNewMaxNumValue().
 document.getElementById('playerMaxNum').addEventListener('change', getNewMaxNumValue)
 
 // Define function (with ES5 to not be anonymous) to retrieve the new value as an integer & create a new random number within the resulting range.
 function getNewMinNumValue() {
-  // Get the input value and use parseInt to convert it from a string to an integer & round it if needed
+  // Get the input value and use parseInt to convert it from a string to an integer & round it if needed.
   minNumValue = parseInt(document.getElementById('playerMinNum').value);
-  // reassign a random value, rounded down to an integer between the updated range min & max
+  // reassign a random value, rounded down to an integer between the updated range min & max.
   randNum = Math.floor( Math.random() * (maxNumValue - minNumValue) + minNumValue )
 }
 // Define function (with ES5 to not be anonymous) to retrieve the new value as an integer & create a new random number within the resulting range.
 function getNewMaxNumValue() {
   // Get the input value and use parseInt to convert it from a string to an integer & round it if needed.
   maxNumValue = parseInt(document.getElementById('playerMaxNum').value);
-  // Reassign a random value, rounded down to an integer between the updated range min & max
+  // Reassign a random value, rounded down to an integer between the updated range min & max.
   randNum = Math.floor( Math.random() * (maxNumValue - minNumValue) + minNumValue )
 }
 
@@ -33,23 +33,28 @@ document.getElementById('guessSubmission').addEventListener('click', checkGuess)
 function checkGuess() {
   // Call the function, changeViewAfterAnyGuess()
   changeViewAfterAnyGuess();
-
+  // Define the element #guessResponse with ES6 const for use below & to denote that this will not be reassigned,
   const gameResponse = document.getElementById('guessResponse');
+  // Parse the value of user guess input as an integer & define the result with ES6 let for use below & to denote that this will be reassigned.
   let playerGuess = parseInt(guessInput.value);
-
+  // Conditional for when user guesses correctly.
   if (playerGuess === randNum) {
       gameResponse.textContent = 'BOOM!';
       gameResponse.style.backgroundColor = '#ffffff';
       changeViewAfterCorrectGuess();
+  // Conditional for when user enters non-numerical values or nothing at all.
   } else if ((guessInput.value === '') || (isNaN(Number(guessInput.value)))) {
       gameResponse.textContent = 'Please enter a number.';
       gameResponse.style.backgroundColor = '#fad1e2';
+  // Conditional for when user enters a guess that is above the max value of the range in which the answer resides.
   } else if (playerGuess > maxNumValue) {
       gameResponse.textContent = 'That number is above the range of possible values.'
       gameResponse.style.backgroundColor = '#fad1e2';
+  // Conditional for when user enters a guess that is below the min value of the range in which the answer resides.
   } else if (playerGuess < minNumValue) {
       gameResponse.textContent = 'That number is below the range of possible values.'
       gameResponse.style.backgroundColor = '#fad1e2';
+  // Conditional for when user enters a guess that is above the answer.
   } else if (playerGuess > randNum){
       gameResponse.textContent = 'That is too high.';
       gameResponse.style.backgroundColor = '#ffffff'
