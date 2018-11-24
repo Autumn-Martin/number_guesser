@@ -43,15 +43,19 @@ function checkGuess() {
       gameResponse.textContent = 'BOOM!';
       // Set a white background for this text (also overrides the previous background if it was pink).
       gameResponse.style.backgroundColor = '#ffffff';
-      //
+      // Call the function, changeViewAfterCorrectGuess().
       changeViewAfterCorrectGuess();
   // Conditional for when user enters non-numerical values or nothing at all.
   } else if ((guessInput.value === '') || (isNaN(Number(guessInput.value)))) {
+      // Display this text.
       gameResponse.textContent = 'Please enter a number.';
+      // Set background for text to be pink to indicate an error.
       gameResponse.style.backgroundColor = '#fad1e2';
   // Conditional for when user enters a guess that is above the max value of the range in which the answer resides.
   } else if (playerGuess > maxNumValue) {
+      // Display this text.
       gameResponse.textContent = 'That number is above the range of possible values.'
+      // Set background for text to be pink to indicate an error.
       gameResponse.style.backgroundColor = '#fad1e2';
   // Conditional for when user enters a guess that is below the min value of the range in which the answer resides.
   } else if (playerGuess < minNumValue) {
@@ -59,15 +63,21 @@ function checkGuess() {
       gameResponse.style.backgroundColor = '#fad1e2';
   // Conditional for when user enters a guess that is above the answer.
   } else if (playerGuess > randNum){
+      // Display this text.
       gameResponse.textContent = 'That is too high.';
+      // Set a white background for this text (also overrides the previous background if it was pink).
       gameResponse.style.backgroundColor = '#ffffff'
   // Conditional for when user enters a guess that is below the answer.
   } else if (playerGuess < randNum) {
+      // Display this text.
       gameResponse.textContent = 'That is too low.';
+      // Set a white background for this text (also overrides the previous background if it was pink).
       gameResponse.style.backgroundColor = '#ffffff'
   // Conditional for case when non other conditions are met.
   } else {
+      // Display this text.
       gameResponse.textContent = 'Guess again!';
+      // Set a pink background for this text to indicate an error.
       gameResponse.style.backgroundColor = '#fad1e2'
   }
 }
@@ -86,6 +96,7 @@ function changeViewAfterAnyGuess() {
   document.getElementById('range').textContent = `range: ${minNumValue} to ${maxNumValue}`;
 }
 
+// This function (defineed by ES5 for nonanonymity) prepares a different view for a user after a correct guess.
 function changeViewAfterCorrectGuess() {
   // Hide guess button.
   document.getElementById('guessSubmission').style.display = 'none';
@@ -97,11 +108,15 @@ function changeViewAfterCorrectGuess() {
   describeNextAnswerRange();
 }
 
+// This function (defined by ES5 for nonanonymity) displays a message that explains the next range without increasing the current range.
 function describeNextAnswerRange() {
-  // 
-  var nextMinValue = minNumValue - 10
-  var nextMaxValue = maxNumValue + 10
+  // Assign the next min value, which will be decreased by 10, with ES6 let to denote that it will change.
+  let nextMinValue = minNumValue - 10
+  // Assign the next max value, which will be increased by 10, with ES6 let to denote that it will change.
+  let nextMaxValue = maxNumValue + 10
+  // Set text content of element #continueMessage to a string message that includes string interpolation of the next min & max values.
   document.getElementById('continueMessage').textContent = `Your next answer will be between ${nextMinValue} & ${nextMaxValue}!`;
+  // Display element #continueMessage so that user will see its text content.
   document.getElementById('continueMessage').style.display = 'inline';
 }
 
