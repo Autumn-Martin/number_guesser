@@ -73,7 +73,7 @@ function checkGuess() {
       gameResponse.textContent = 'That is too low.';
       // Set a white background for this text (also overrides the previous background if it was pink).
       gameResponse.style.backgroundColor = '#ffffff'
-  // Conditional for case when non other conditions are met.
+  // Conditional for case when no other conditions are met.
   } else {
       // Display this text.
       gameResponse.textContent = 'Guess again!';
@@ -129,8 +129,8 @@ function displayGuess() {
   if (document.getElementById('guessInput').value === '') {
     // Display this text instead of the last input.
     document.getElementById('guessDisplay').textContent = 'nada'
-  // Conditional for when user input is non-numerical.
-    // 'NaN' or Not-a-Number is returned when the Number() function attempts to convert a non-numerical value to a number.
+  /* Conditional for when user input is non-numerical.
+    'NaN' or Not-a-Number is returned when the Number() function attempts to convert a non-numerical value to a number. */
   } else if (isNaN(Number(document.getElementById('guessInput').value))) {
     // Display this text instead of the last input.
     document.getElementById('guessDisplay').textContent = 'invalid'
@@ -146,12 +146,12 @@ function displayGuess() {
 // ---------------------- clear input field & disable clear button -------------
 // When user clicks on 'Clear', this event listener calls the function, clearInput().
 document.getElementById('clearButton').addEventListener('click', clearInput);
-// This function (defined by ES5 for nonanonymity & readability) removes any text currently residing in the guess input field, & disables the clear enableButton
 
+// This function (defined by ES5 for nonanonymity & readability) removes any text currently residing in the guess input field, & disables the clear button.
 function clearInput() {
   // Clear guess input field by setting its value equal to an empty string.
   document.getElementById('guessInput').value = '';
-  // Call the function, disableButton(), while there is no need to click it.
+  // Call the function, disableClearButton(), while there is no need to click it.
   disableClearButton();
 }
 
@@ -164,7 +164,7 @@ function disableClearButton() {
 }
 
 // ---------------------- enable clear button when user begins typing ----------
-// When a user types in the field for guess input, this event listener will call the function, enableButton().
+// When a user types in the field for guess input, this event listener will call the function, enableClearButton().
 document.getElementById('guessInput').addEventListener('keypress', enableClearButton)
 // This function (defined by ES5 for nonanonymity & readability) re-enables the button to clear the guess input field.
 function enableClearButton() {
