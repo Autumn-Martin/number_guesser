@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Number Guesser</title>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' type='text/css' href='reset.css' />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700&amp;subset=cyrillic-ext" rel="stylesheet">
+    <link rel='stylesheet' type='text/css' href='style.css'/>
+  </head>
+  <body>
+    <div>
+      <header>
+        <h1 class="logo-number">Number</h1>
+        <h1 class="logo-guesser">Guesser</h1>
+        <p id="range"></p>
+      </header>
+    </div>
+    <div class="below-header">
+      <div id="enterAnswerRangeBox">
+        <p>Guess a number</p>
+        <p>between 1 & 10!</p>
+        <p class="range-descriptor">Enter a unique range if you would like: </p>
+        <input type='number' id='playerMinNum'> - <input type='number' id='playerMaxNum'>
+      </div>
+      <div>
+        <input type='text' id='guessInput' placeholder='Enter your guess'>
+      </div>
+      <div>
+        <input type='submit' id='submitGuessButton' class='btn' value='Guess'>
+        <button id="clearButton" class="btn">Clear</button>
+        <div class=continue-message-container>
+          <p id="continueMessage"></p>
+        </div>
+        <button id="continueButton" class="btn">Continue?</button>
+      </div>
+      <div class="game-response-section">
+        <div id="guessIntro"></div>
+        <div id='guessDisplay'></div>
+        <div id="guessResponse"></div>
+      </div>
+
+      <button id="resetButton" class="btn">Reset</button>
+    </div>
+    <script src='main.js'></script>
+  </body>
+</html>
