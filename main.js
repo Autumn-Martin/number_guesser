@@ -2,7 +2,7 @@
 // Assign default min--defined with ES6 let because it is expected to change.
 let minNumValue = 1
 // Assign default max--defined with ES6 let because it is expected to change.
-let maxNumValue = 10
+let maxNumValue = 100
 // 1st assignment of a random number between default min & max values--defined with ES6 let because it is expected to change if user inputs a range.
 let randNum =  Math.floor( Math.random() * (maxNumValue - minNumValue) + minNumValue )
 // Event listener that listens for a change in input for element #playerMinNum. Upon change, runs the function getNewMinNumValue().
@@ -59,7 +59,9 @@ function checkGuess() {
       gameResponse.style.backgroundColor = '#fad1e2';
   // Conditional for when user enters a guess that is below the min value of the range in which the answer resides.
   } else if (playerGuess < minNumValue) {
+      // Display this text.
       gameResponse.textContent = 'That number is below the range of possible values.'
+      // Set background for text to be pink to indicate an error.
       gameResponse.style.backgroundColor = '#fad1e2';
   // Conditional for when user enters a guess that is above the answer.
   } else if (playerGuess > randNum){
