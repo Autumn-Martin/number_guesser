@@ -59,8 +59,8 @@ function changeViewAfterAnyGuess() {
 
 function changeViewAfterCorrectGuess() {
   document.getElementById('submitGuessButton').style.display = 'none';
-  document.getElementById('clear').style.display = 'none';
-  document.getElementById('continue').style.display = 'inline';
+  document.getElementById('clearButton').style.display = 'none';
+  document.getElementById('continueButton').style.display = 'inline';
   describeNextAnswerRange();
 }
 
@@ -86,7 +86,7 @@ function displayGuess() {
 }
 
 // ---------------------- clear input field & disable clear button -------------
-document.getElementById('clear').addEventListener('click', clearInput);
+document.getElementById('clearButton').addEventListener('click', clearInput);
 
 function clearInput() {
   document.getElementById('guessInput').value = '';
@@ -94,21 +94,21 @@ function clearInput() {
 }
 
 function disableButton() {
-  document.getElementById('clear').disabled = true
-  document.getElementById('clear').style.backgroundColor = '#D0D2D3'
+  document.getElementById('clearButton').disabled = true
+  document.getElementById('clearButton').style.backgroundColor = '#D0D2D3'
 }
 
 // ---------------------- enable clear button when user begins typing ----------
 document.getElementById('guessInput').addEventListener('keypress', enableButton)
 
 function enableButton() {
-  document.getElementById('clear').disabled = false
-  document.getElementById('clear').style.backgroundColor = '#929497'
+  document.getElementById('clearButton').disabled = false
+  document.getElementById('clearButton').style.backgroundColor = '#929497'
 }
 
 // ---------------------- continue game ----------------------------------------
-document.getElementById('continue').addEventListener('click', continueGame)
-document.getElementById('continue').addEventListener('click', regenRandNum)
+document.getElementById('continueButton').addEventListener('click', continueGame)
+document.getElementById('continueButton').addEventListener('click', regenRandNum)
 
 function continueGame() {
   increaseRange();
@@ -128,8 +128,8 @@ function clearLastAnswer() {
 function resetViewToContinueGamePlay() {
   document.getElementById('continueMessage').style.display = 'none';
   document.getElementById('submitGuessButton').style.display = 'inline';
-  document.getElementById('clear').style.display = 'inline';
-  document.getElementById('continue').style.display = 'none';
+  document.getElementById('clearButton').style.display = 'inline';
+  document.getElementById('continueButton').style.display = 'none';
   document.getElementById('range').textContent = `range: ${minNumValue} to ${maxNumValue}`;
 }
 
