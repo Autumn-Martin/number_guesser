@@ -112,8 +112,8 @@ document.getElementById('continue').addEventListener('click', regenRandNum)
 
 function continueGame() {
   increaseRange();
-  clearLastAnswer();
   resetViewToContinueGamePlay();
+  clearLastAnswer();
 }
 
 function increaseRange() {
