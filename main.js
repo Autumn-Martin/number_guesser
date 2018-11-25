@@ -28,7 +28,7 @@ function getNewMaxNumValue() {
 
 // ---------------------- check guess ------------------------------------------
 // When user clicks on "Guess", this event listener calls the checkGuess function.
-document.getElementById('guessSubmission').addEventListener('click', checkGuess);
+document.getElementById('submitGuessButton').addEventListener('click', checkGuess);
 // This function contains the logic to check a users guess. Used ES5 syntax for nonanonymity & readability.
 function checkGuess() {
   // Call the function, changeViewAfterAnyGuess()
@@ -87,7 +87,7 @@ function changeViewAfterAnyGuess() {
   // This line sets the text content of the element with id guessIntro to this string, which displays the string on the page.
   document.getElementById('guessIntro').textContent = 'Your last guess was';
   // This line changes the display of the #reset element from none to inline, causing the reset button to appear on the page now that it may be needed.
-  document.getElementById('reset').style.display = 'inline';
+  document.getElementById('resetButton').style.display = 'inline';
   // This line changes the display of the #enterAnswerRangeBox element to none, so that users nolonger have the option to change the range after it has been set without reseting the game.
   document.getElementById('enterAnswerRangeBox').style.display = 'none';
   // This line changes the display of the #range element from none to block, so that a range appears at the top of the page now that it has been set.
@@ -99,27 +99,22 @@ function changeViewAfterAnyGuess() {
 // This function (defineed by ES5 for nonanonymity & readability) prepares a different view for a user after a correct guess.
 function changeViewAfterCorrectGuess() {
   // Hide guess button.
-  document.getElementById('guessSubmission').style.display = 'none';
+  document.getElementById('submitGuessButton').style.display = 'none';
   // Hide clear button.
-  document.getElementById('clear').style.display = 'none';
+  document.getElementById('clearButton').style.display = 'none';
   // Display continue button.
-  document.getElementById('continue').style.display = 'inline';
+  document.getElementById('continueButton').style.display = 'inline';
   // Call describeNextAnswerRange() function.
   describeNextAnswerRange();
 }
 
 // This function (defined by ES5 for nonanonymity & readability) displays a message that explains the next range without increasing the current range.
 function describeNextAnswerRange() {
-<<<<<<< HEAD
   // Assign the next min value, which will be decreased by 10, with ES6 let to denote that it will change.
   let nextMinValue = minNumValue - 10
   // Assign the next max value, which will be increased by 10, with ES6 let to denote that it will change.
   let nextMaxValue = maxNumValue + 10
   // Set text content of element #continueMessage to a string message that includes string interpolation of the next min & max values.
-=======
-  let nextMinValue = minNumValue - 10
-  let nextMaxValue = maxNumValue + 10
->>>>>>> small_changes
   document.getElementById('continueMessage').textContent = `Your next answer will be between ${nextMinValue} & ${nextMaxValue}!`;
   // Display element #continueMessage so that user will see its text content.
   document.getElementById('continueMessage').style.display = 'inline';
@@ -127,7 +122,7 @@ function describeNextAnswerRange() {
 
 // ---------------------- display last guess -----------------------------------
 // When user clicks on "Guess", this event listener calls the function, displayGuess().
-document.getElementById('guessSubmission').addEventListener('click', displayGuess);
+document.getElementById('submitGuessButton').addEventListener('click', displayGuess);
 // This function (defined by ES5 for nonanonymity & readability) displays the user's last guess if it was valid, 'nada' if the user entered nothing, or 'invalid' if the entry is non-numerical.
 function displayGuess() {
   // Conditional for when user input is nothing (which causes the input value to equal an empty string).
@@ -141,67 +136,58 @@ function displayGuess() {
     document.getElementById('guessDisplay').textContent = 'invalid'
   // Conditional for when user input is valid.
   } else {
-<<<<<<< HEAD
     // Define the integer value of user input (using ES6 let to denote that this value will change).
     let guessInput = parseInt(document.getElementById('guessInput').value);
     // Display the integer version of the last input (defined as guessInput above).
-=======
-    let guessInput = parseInt(document.getElementById('guessInput').value);
->>>>>>> small_changes
     document.getElementById('guessDisplay').textContent = guessInput;
   }
 }
 
-<<<<<<< HEAD
 // ---------------------- clear input field & disable clear button -------------
 // When user clicks on 'Clear', this event listener calls the function, clearInput().
-document.getElementById('clear').addEventListener('click', clearInput);
+document.getElementById('clearButton').addEventListener('click', clearInput);
 // This function (defined by ES5 for nonanonymity & readability) removes any text currently residing in the guess input field, & disables the clear enableButton
-=======
-// ---- clear input field & disable clear button ----
-document.getElementById('clear').addEventListener('click', clearInput);
 
->>>>>>> small_changes
 function clearInput() {
   // Clear guess input field by setting its value equal to an empty string.
   document.getElementById('guessInput').value = '';
   // Call the function, disableButton(), while there is no need to click it.
-  disableButton();
+  disableClearButton();
 }
 
 // This function (defined by ES5 for nonanonymity & readability) disables the clear button & lightens its color.
-function disableButton() {
+function disableClearButton() {
   // Disable the clear button.
-  document.getElementById('clear').disabled = true
+  document.getElementById('clearButton').disabled = true
   // Change the color of the clear button from dark to light grey to signify that it is disabled.
-  document.getElementById('clear').style.backgroundColor = '#D0D2D3'
+  document.getElementById('clearButton').style.backgroundColor = '#D0D2D3'
 }
 
 // ---------------------- enable clear button when user begins typing ----------
 // When a user types in the field for guess input, this event listener will call the function, enableButton().
-document.getElementById('guessInput').addEventListener('keypress', enableButton)
+document.getElementById('guessInput').addEventListener('keypress', enableClearButton)
 // This function (defined by ES5 for nonanonymity & readability) re-enables the button to clear the guess input field.
-function enableButton() {
+function enableClearButton() {
   // Un-disable clear button.
-  document.getElementById('clear').disabled = false
+  document.getElementById('clearButton').disabled = false
   // Reset clear button color to the darker appearance it has when not disabled.
-  document.getElementById('clear').style.backgroundColor = '#929497'
+  document.getElementById('clearButton').style.backgroundColor = '#929497'
 }
 
 // ---------------------- continue game ----------------------------------------
 // When user clicks on continue, this event listener runs the continueGame() function.
-document.getElementById('continue').addEventListener('click', continueGame)
+document.getElementById('continueButton').addEventListener('click', continueGame)
 // When user clicks on continue, this event listener runs the regenRandNum() function.
-document.getElementById('continue').addEventListener('click', regenRandNum)
+document.getElementById('continueButton').addEventListener('click', regenRandNum)
 /* This function (defined by ES5 for nonanonymity & readability) initializes for the game to be continued by:
   broadening the range that contains the answer, clearing the last user input, & preparing the view for the user */
 function continueGame() {
   // Calls the function to increase range.
   increaseRange();
-  // Calls the function to clear last answer.
-  clearLastAnswer();
   // Calls the function to reset view to continue game play.
   resetViewToContinueGamePlay();
+  // Calls the function to clear last answer.
+  clearLastAnswer();
 }
 // This function (defined by ES5 for nonanonymity & readability) broadens the range that contains the answer.
 function increaseRange() {
@@ -220,11 +206,11 @@ function resetViewToContinueGamePlay() {
   // Hide continue message.
   document.getElementById('continueMessage').style.display = 'none';
   // Show submit button.
-  document.getElementById('guessSubmission').style.display = 'inline';
+  document.getElementById('submitGuessButton').style.display = 'inline';
   // Show clear button.
-  document.getElementById('clear').style.display = 'inline';
+  document.getElementById('clearButton').style.display = 'inline';
   // Hide continue button.
-  document.getElementById('continue').style.display = 'none';
+  document.getElementById('continueButton').style.display = 'none';
   // Update range text content to new range.
   document.getElementById('range').textContent = `range: ${minNumValue} to ${maxNumValue}`;
 }
@@ -236,4 +222,4 @@ function regenRandNum() {
 
 // ---------------------- reset game -------------------------------------------
 // When user clicks on "Reset", this event listener will reload the page. Used ES6 syntax here to make this one line.
-document.getElementById('reset').addEventListener('click', () => location.reload());
+document.getElementById('resetButton').addEventListener('click', () => location.reload());
