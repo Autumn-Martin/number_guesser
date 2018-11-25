@@ -56,8 +56,6 @@ input:focus {outline: 1px solid #ED458B;}
 .logo-number {
   font-weight: bold;
   color: #ED458B
-  /* color: #1ea896 */
-  /* ^teal background theme */
 }
 
 .logo-guesser {
@@ -99,18 +97,18 @@ input:focus {outline: 1px solid #ED458B;}
   width: 70%;
 }
 
-#reset {
+#resetButton {
   width: 70%;
   display: none;
 }
 
-#continue {
+#continueButton {
   display: none;
 }
 
 #continueMessage {
   display: none;
-  color: #ED458B;
+  color: #EB008B;
 }
 
 .continue-message-container {
@@ -122,10 +120,6 @@ input:focus {outline: 1px solid #ED458B;}
   border: 1px solid #ED458B;
   background-color: #fde8f1;
   color: #404041;
-  /* border: 1px solid #1ea896;
-  background-color:#d4f7f3;
-  color: #404041; */
-  /* ^teal background */
   padding: 1% 1%;
   width: 68%;
   margin: auto;
@@ -134,15 +128,11 @@ input:focus {outline: 1px solid #ED458B;}
 
 #playerMinNum {
   border: 1px solid #ED458B;
-  /* border: 1px solid #1ea896; */
-  /* ^teal background theme */
   width: 10%;
 }
 
 #playerMaxNum {
   border: 1px solid #ED458B;
-  /* border: 1px solid #1ea896; */
-  /* ^teal background theme */
   width: 10%;
 }
 
