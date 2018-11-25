@@ -90,18 +90,18 @@ document.getElementById('clearButton').addEventListener('click', clearInput);
 
 function clearInput() {
   document.getElementById('guessInput').value = '';
-  disableButton();
+  disableClearButton();
 }
 
-function disableButton() {
+function disableClearButton() {
   document.getElementById('clearButton').disabled = true
   document.getElementById('clearButton').style.backgroundColor = '#D0D2D3'
 }
 
 // ---------------------- enable clear button when user begins typing ----------
-document.getElementById('guessInput').addEventListener('keypress', enableButton)
+document.getElementById('guessInput').addEventListener('keypress', enableClearButton)
 
-function enableButton() {
+function enableClearButton() {
   document.getElementById('clearButton').disabled = false
   document.getElementById('clearButton').style.backgroundColor = '#929497'
 }
